@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import request from "../utils/request"
 
 export default {
     name: "ChatView",
@@ -20,21 +20,23 @@ export default {
         }
     },
     mounted() {
-        let _this = this
-
-        axios.get('http://localhost:3000/api/chats')
-            .then(function (response) {
+        request({
+            url: '/chats',
+            method: 'get'
+        })
+            .then(response => {
                 // 处理成功情况
                 console.log(response);
-                _this.text = response.data.msg
+                this.text = response.msg
             })
-            .catch(function (error) {
+            .catch(error => {
                 // 处理错误情况
                 console.log(error);
             })
-            .then(function () {
+            .then(() => {
                 // 总是会执行
             });
+
     }
 }
 </script>
