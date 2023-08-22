@@ -65,7 +65,7 @@ export default {
 <template>
     <n-config-provider class="h-full">
         <n-layout>
-            <n-layout-header>
+            <n-layout-header class="fixed top-0 z-50">
                 <div class="flex">
                     <n-menu v-model:value="activeKey" mode="horizontal" :options="menuOptions" />
                 </div>
