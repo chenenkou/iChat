@@ -71,7 +71,7 @@ export default {
                 </div>
             </n-layout-header>
         </n-layout>
-        <router-view />
+        <router-view></router-view>
     </n-config-provider>
 </template>
 
