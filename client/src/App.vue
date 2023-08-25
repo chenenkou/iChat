@@ -1,7 +1,8 @@
 <script>
 import { h, ref } from "vue";
 import { RouterLink, RouterView } from 'vue-router'
-import {Icon} from "@iconify/vue";
+import { useTheme } from '@/hooks/useTheme'
+import { Icon } from "@iconify/vue";
 
 export default {
     name: "App",
@@ -45,7 +46,9 @@ export default {
                     ),
                     key: "go-chat-full"
                 }
-            ]
+            ],
+            theme: null,
+            themeOverrides: null,
         }
     },
     components: {
@@ -53,6 +56,11 @@ export default {
     },
     mounted() {
 
+    },
+    created() {
+        const themeData = useTheme();
+        this.theme = themeData.theme;
+        this.themeOverrides = themeData.themeOverrides;
     },
     methods: {
         renderIcon(icon) {
@@ -63,7 +71,10 @@ export default {
 </script>
 
 <template>
-    <n-config-provider class="h-full">
+    <n-config-provider
+        class="h-full"
+        :theme="theme"
+        :theme-overrides="themeOverrides">
         <n-layout>
             <n-layout-header class="fixed top-0 z-50">
                 <div class="flex">

@@ -46,10 +46,12 @@ dataSources.value.forEach((item, index) => {
         updateChatSome(+uuid, index, { loading: false })
 })
 
+// 发送按钮点击事件
 function handleSubmit() {
     onConversation()
 }
 
+// 发起会话
 async function onConversation() {
     let message = prompt.value
 
@@ -500,21 +502,28 @@ onUnmounted(() => {
         <footer :class="footerClass">
             <div class="w-full max-w-screen-xl m-auto">
                 <div class="flex items-center justify-between space-x-2">
+                    <!-- 清空会话 按钮 Start -->
                     <HoverButton @click="handleClear">
-            <span class="text-xl text-[#4f555e] dark:text-white">
-              <SvgIcon icon="ri:delete-bin-line" />
-            </span>
+                        <span class="text-xl text-[#4f555e] dark:text-white">
+                          <SvgIcon icon="ri:delete-bin-line" />
+                        </span>
                     </HoverButton>
+                    <!-- 清空会话 按钮 End -->
+                    <!-- 保存会话到图片 按钮 Start -->
                     <HoverButton v-if="!isMobile" @click="handleExport">
-            <span class="text-xl text-[#4f555e] dark:text-white">
-              <SvgIcon icon="ri:download-2-line" />
-            </span>
+                        <span class="text-xl text-[#4f555e] dark:text-white">
+                          <SvgIcon icon="ri:download-2-line" />
+                        </span>
                     </HoverButton>
+                    <!-- 保存会话到图片 按钮 End -->
+                    <!-- 聊天上下文模式 按钮 Start -->
                     <HoverButton v-if="!isMobile" @click="toggleUsingContext">
-            <span class="text-xl" :class="{ 'text-[#4b9e5f]': usingContext, 'text-[#a8071a]': !usingContext }">
-              <SvgIcon icon="ri:chat-history-line" />
-            </span>
+                        <span class="text-xl" :class="{ 'text-[#4b9e5f]': usingContext, 'text-[#a8071a]': !usingContext }">
+                          <SvgIcon icon="ri:chat-history-line" />
+                        </span>
                     </HoverButton>
+                    <!-- 聊天上下文模式 按钮 End -->
+                    <!-- 输入框 Start -->
                     <NAutoComplete v-model:value="prompt" :options="searchOptions" :render-label="renderOption">
                         <template #default="{ handleInput, handleBlur, handleFocus }">
                             <NInput
@@ -530,13 +539,16 @@ onUnmounted(() => {
                             />
                         </template>
                     </NAutoComplete>
+                    <!-- 输入框 End -->
+                    <!-- 发送 按钮 Start -->
                     <NButton type="primary" :disabled="buttonDisabled" @click="handleSubmit">
                         <template #icon>
-              <span class="dark:text-black">
-                <SvgIcon icon="ri:send-plane-fill" />
-              </span>
+                          <span class="dark:text-black">
+                            <SvgIcon icon="ri:send-plane-fill" />
+                          </span>
                         </template>
                     </NButton>
+                    <!-- 发送 按钮 End -->
                 </div>
             </div>
         </footer>
