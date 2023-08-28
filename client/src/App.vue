@@ -34,18 +34,6 @@ export default {
                     ),
                     key: "go-chat"
                 },
-                {
-                    label: () => h(
-                        RouterLink,
-                        {
-                            to: {
-                                name: "chat-full"
-                            }
-                        },
-                        {default: () => "聊天(全)"}
-                    ),
-                    key: "go-chat-full"
-                }
             ],
             theme: null,
             themeOverrides: null,

@@ -13,11 +13,6 @@ const router = createRouter({
       path: '/chat/:uuid?',
       name: 'chat',
       component: () => import('../views/ChatView/Index.vue')
-    },
-    {
-      path: '/chat-full',
-      name: 'chat-full',
-      component: () => import('../views/ChatFullView.vue')
     }
   ]
 })
